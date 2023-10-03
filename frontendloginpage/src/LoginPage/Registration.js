@@ -3,7 +3,7 @@ import React, { Fragment , useState } from "react";
 import axios from "axios";
 
 function Registration() {
-
+    
     const [name , setName] = useState('');
     const [email , setEmail] = useState('');
     const [password , setPassword] = useState('');
@@ -27,10 +27,13 @@ function Registration() {
             Password : password,
             IsActive : 1
         }
-        const url="http://localhost:5278/api/Login/Registration/";
+        const url='http://localhost:5278/api/Login/Registration';
         axios.post(url,data).then((result) => {
-            if(result.data == "Ok"){
-                alert("Registration Successfully");
+            //console.log("ok1");
+            console.log(result.data);
+            if(result.data === "Ok"){
+                //console.log("ok2");
+                alert("Registred Successfully");
             }
             else{
                 alert(result.data);
