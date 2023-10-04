@@ -6,6 +6,7 @@ import Dashboard from './LoginPage/Dashboard';
 import Preferences from './LoginPage/Preferences';
 import Registration from './LoginPage/Registration';
 import Login from './LoginPage/Login';
+import Home from './LoginPage/Home';
 import { BrowserRouter as Router,Route,Switch, Routes} from 'react-router-dom';
 
 function App() {
@@ -20,11 +21,13 @@ function App() {
       <br></br>
       <Registration/> */}
       <div className='wrapper'>
-        <h1>Application</h1>
+        {/* <h1>Application .JS</h1> */}
         <Router>
           <Routes>          
-              <Route path='/dashboard' element={<Login/>} />
-              <Route path='/dashboard' element={<h1>Dashboard</h1>} />
+              <Route path='/' element={<Home/>}/>
+              <Route path='/Home' element={<Login/>} />
+              {/* <Route path='/dashboard' element={<h1>Dashboard</h1>} /> */}
+              {/* <Route path='/login' element/> */}
               <Route path='/preference' element={<h1>Preferences</h1>}/>
               <Route path='/Registration' element={<Registration></Registration>}/>          
           </Routes>

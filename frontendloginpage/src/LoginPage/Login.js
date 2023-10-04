@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import PropTypes from   'prop-types'
 import './Login.css';
 import './Registration';
-import { Route,Routes,BrowserRouter,useNavigate} from 'react-router-dom';
+import { Route,Routes,BrowserRouter,Navigate} from 'react-router-dom';
 
 async function LoginUser(credentials){
     return fetch('http://localhost:8080/login',{
@@ -20,8 +20,14 @@ async function LoginUser(credentials){
 export default function Login({setToken}) {
     const [username , setUsername] = useState();
     const [password , setPassword] = useState();
+    const [resetAllfiled,setResetAllfiled] = useState(false);
     //console.log(username,password);
     //const navigate = useNavigate();
+
+    if(resetAllfiled){
+        console.log(resetAllfiled);
+        <Navigate to="/login"/>;
+    }
     
 
     const handleSubmit = async e =>{
@@ -38,7 +44,7 @@ export default function Login({setToken}) {
                 setToken(token);
             }
             else{                
-                console.log("empty12");
+                console.log("empty token");
             }
             
         }
@@ -55,7 +61,7 @@ export default function Login({setToken}) {
 
     return (
         <div className="login-wrapper">
-            <h1 className='div-welcome'>Welcome Back to YouTube </h1>
+            <h1 className='div-welcome'>Welcome Back to YouTube</h1>
             <form className='div-form'>
                 <label>
                     {/* <p>Username</p> */}
@@ -67,7 +73,7 @@ export default function Login({setToken}) {
                 <br></br><br></br>
                 <div>
                     <button type="submit" className='button-1' onClick={handleSubmit}><b>Login</b></button>                   
-                    <button type="submit" className='button-2 btn-reset'><b>Reset</b></button>
+                    <button type="submit" className='button-2 btn-reset' onClick={()=>setResetAllfiled(true)}><b>Reset</b></button>
                 </div>
                 <div className='div-register'>
                     <p className='div-hyperlink'>Don't have an account?<a href='/Registration'> Sign up</a></p>
